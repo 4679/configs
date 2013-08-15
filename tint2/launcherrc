@@ -1,0 +1,19 @@
+####当使用tintwizard改变了tint2面板的设置后，Launcher会消失，此时请把以下配置加入到~/.config/tint2/tint2rc的末尾，以保证tint2中有Launcher。
+####panel_items一行，T代表Taskbar，L代表Launcher，S代表Systray，C代表Clock，B代表Battery，可自行调整顺序。
+
+
+# Launcher
+panel_items = TLSC
+launcher_icon_theme = Faenza-Dark
+launcher_padding = 1 1
+launcher_background_id = 5
+launcher_icon_size = 32
+launcher_tooltip = 1
+launcher_icon_asb = 75 0 0
+launcher_item_app = /usr/share/applications/Thunar.desktop
+launcher_item_app = /usr/share/applications/lxterminal.desktop
+launcher_item_app = /usr/share/applications/leafpad.desktop
+launcher_item_app = /usr/share/applications/firefox.desktop
+launcher_item_app = /usr/share/applications/audacious.desktop
+launcher_item_app = /usr/share/applications/gnome-mplayer.desktop
+launcher_item_app = /usr/share/applications/osdlyrics.desktop

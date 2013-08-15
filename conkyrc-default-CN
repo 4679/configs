@@ -1,0 +1,138 @@
+######################
+# - Conky settings - #
+######################
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+out_to_console no
+
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+
+format_human_readable
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont XHei DIN:size=10
+override_utf8_locale yes
+text_buffer_size 2048
+
+#############################
+# - Window specifications - #
+#############################
+background yes
+own_window_class Conky
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+alignment top_right
+gap_x 25
+gap_y 110 
+minimum_size 185 600
+maximum_width 185
+
+default_bar_size 60 8
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+
+default_color cccccc
+
+color0 ffffff
+color1 ffffff
+color2 ffffff
+color3 ffffff
+
+TEXT
+${font XHei DIN:style=Bold:size=10}系统状态 $stippled_hr${font}
+##############
+# - SYSTEM - #
+##############
+${color0}${voffset 6}${font OpenLogos:size=19}B${font}${color}${goto 32}${voffset -14}内核版本:  ${alignr}${color2}${kernel}${color}
+${goto 32}开机时长: ${alignr}${color2}${uptime}${color}
+# |--UPDATES
+${goto 32}已安装了: ${alignr}${font XHei DIN:style=Bold:size=10}${color1}${execi 360 pacman -Q | wc -l | tail}${color}${font} ${color2}个软件包${color}
+# |--CPU
+${offset 1}${color0}${font Poky:size=16}P${font}${offset -19}${voffset 9}${cpubar cpu0 4,18}${color}${voffset -16}${goto 32}CPU1 负荷: ${font XHei DIN:style=Bold:size=10}${color1}${cpu cpu1}%${font} ${alignr}${font XHei DIN:style=Bold:size=10}${color1}${execi 30 sensors | grep 'Core0' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpugraph cpu1 8,50 }${color}
+${goto 32}CPU2 负荷: ${font XHei DIN:style=Bold:size=10}${color1}${cpu cpu2}%${font} ${alignr}${font XHei DIN:style=Bold:size=10}${color1}${execi 30 sensors | grep 'Core1' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpugraph cpu2 8,50 }${color}
+# |--MEM
+${color0}${font Poky:size=16}M${font}${color}${goto 32}${voffset -7}内存占用率: ${font XHei DIN:style=Bold:size=10}${color1}$memperc%${color}${font}
+${offset 1}${voffset 2}${color0}${membar 4,18}${color}${goto 32}${voffset -2}空闲: ${font XHei DIN:style=Bold:size=10}${color2}${memeasyfree}${color}${font} 使用: ${font XHei DIN:style=Bold:size=10}${color2}${mem}${color}${font}
+# |--PROC
+${voffset 2}${color0}${font Poky:size=15}a${font}${color}${goto 32}${voffset -10}最占用资源的进程: ${color2}${alignr 13}CPU${alignr}RAM${color}
+${voffset -1}${goto 42}${color2}${top name 1}${color}${font XHei DIN:style=Bold:size=10}${color1} ${goto 126}${top cpu 1}${alignr }${top mem 1}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 2}${color}${font XHei DIN:style=Bold:size=10}${color1} ${goto 126}${top cpu 2}${alignr }${top mem 2}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 3}${color}${font XHei DIN:style=Bold:size=10}${color1} ${goto 126}${top cpu 3}${alignr }${top mem 3}${color}${font}
+#############
+# - CLOCK - #
+#############
+${voffset 4}${font XHei DIN:style=Bold:size=10}日期时间 $stippled_hr${font}
+${voffset 4}${goto 32}${font clockfaces:size=40}O${font}
+${voffset -34}${goto 41}${font zoraclockH:size=30}${color2}${execpi 120 /usr/share/conkycolors/bin/conkyClock hour}${color}${font}
+${voffset -39}${goto 35}${font zoraclockM:size=40}${color2}${execpi 60 /usr/share/conkycolors/bin/conkyClock minute}${color}${font}
+${goto 100}${voffset -50}${font XHei DIN:style=Bold:size=11}${color2}${time %H}${time :%M}${time :%S}${color}${font}
+${goto 100}${voffset 0}${time %Y年 %b%d日}${voffset 8}
+${goto 100}${voffset -8}${font XHei DIN:style=Bold:size=10}${color2}${time %A}${color}${font}
+${goto 100}${voffset 0}${font XHei DIN:size=10}${alignc}${execpi 300 ~/.conkycolors/bin/lunar}${font}
+################
+# - CALENDAR - #
+################
+${voffset -2}${color0}${font Poky:size=16}D${font}${voffset -8}${font XHei DIN:style=Bold:size=7}${offset -17}${voffset 4}${time %d}${font}${color}${voffset -1}${font XHei DIN:size=7}${execpi 300 DJS=`date +%_d`; cal -1 | sed 's/日 一 二 三 四 五 六/${font XHei DIN:size=10} 日 一 二 三 四 五 六${font Monospace:size=7}/' |sed '2,8!d'| sed '/./!d' | sed 's/^/${goto 58} /'| sed 's/$/ /' | sed 's/^/ /' | sed /" $DJS "/s/" $DJS "/" "'${font Arial:style=Bold:size=10}${voffset -2}${offset 0}${color1} '"$DJS"'${color}${font Monospace:size=7}'" "/}${voffset -1}
+##########
+# - HD - #
+##########
+${voffset 4}${font XHei DIN:style=Bold:size=10}硬盘 $stippled_hr${font}
+# |--HDTEMP1
+  ${voffset 4}${color0}${font Weather:size=15}y${font}${color}${voffset -3}${goto 32}温度: ${font XHei DIN:style=Bold:size=10}${color1}没有传感器${color}${font}${alignr}${color2}/dev/sda${color}
+${execpi 30 /usr/share/conkycolors/bin/conkyHD1}
+###############
+# - NETWORK - #
+###############
+${voffset 4}${font XHei DIN:style=Bold:size=10}网络 $stippled_hr${font}
+# |--WLAN0
+${if_up wlan0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}上传: ${font XHei DIN:style=Bold:size=10}${color1}${upspeed wlan0}${color}${font} ${alignr}${color2}${upspeedgraph wlan0 8,60 }${color}
+${goto 32}总计: ${font XHei DIN:style=Bold:size=10}${color2}${totalup wlan0}${color}${font}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}下载: ${font XHei DIN:style=Bold:size=10}${color1}${downspeed wlan0}${color}${font} ${alignr}${color2}${downspeedgraph wlan0 8,60 }${color}
+${goto 32}总计: ${font XHei DIN:style=Bold:size=10}${color2}${totaldown wlan0}${color}${font}
+${voffset -2}${color0}${font Poky:size=14}Y${font}${color}${goto 32}${voffset -2}Signal: ${font XHei DIN:style=Bold:size=10}${color1}${wireless_link_qual_perc wlan0}%${color}${font} ${alignr}${color2}${wireless_link_bar 8,60 wlan0}${color}
+${voffset 4}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -8}本地 IP: ${alignr}${color2}${addr enp2s0}${color}
+${goto 32}对外 IP: ${alignr}${color2}${execi 10800 curl "http://checkip.dyndns.org/" 2>/dev/null | awk '{print $6}'|cut -d '<' -f1}${color}
+# |--enp2s0
+${else}${if_up enp2s0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}上传: ${font XHei DIN:style=Bold:size=10}${color1}${upspeed enp2s0}${color}${font} ${alignr}${color2}${upspeedgraph enp2s0 8,60 }${color}
+${goto 32}总计: ${font XHei DIN:style=Bold:size=10}${color2}${totalup enp2s0}${color}${font}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}下载: ${font XHei DIN:style=Bold:size=10}${color1}${downspeed enp2s0}${color}${font} ${alignr}${color2}${downspeedgraph enp2s0 8,60 }${color}
+${goto 32}总计: ${font XHei DIN:style=Bold:size=10}${color2}${totaldown enp2s0}${color}${font}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}本地 IP: ${alignr}${color2}${addr enp2s0}${color}
+${goto 32}对外 IP: ${alignr}${color2}${execi 60 curl "http://checkip.dyndns.org/" 2>/dev/null | awk '{print $6}'|cut -d '<' -f1}${color}
+# |--PPP0
+${else}${if_up ppp0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}上传: ${font XHei DIN:style=Bold:size=10}${color1}${upspeed ppp0}${color}${font} ${alignr}${color2}${upspeedgraph ppp0 8,60 }${color}
+${goto 32}总计: ${font XHei DIN:style=Bold:size=10}${color2}${totalup ppp0}${color}${font}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}下载: ${font XHei DIN:style=Bold:size=10}${color1}${downspeed ppp0}${color}${font} ${alignr}${color2}${downspeedgraph ppp0 8,60 }${color}
+${goto 32}总计: ${font XHei DIN:style=Bold:size=10}${color2}${totaldown ppp0}${color}${font}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}本地 IP: ${alignr}${color2}${addr ppp0}${color}
+${else}${voffset 4}${color0}${font PizzaDude Bullets:size=12}4${font}${color}${goto 32}网络不可用${voffset 14}${endif}${endif}${endif}
+##################
+# - CN WEATHER - #
+##################
+# http://www.weather.com.cn/
+${voffset -10}${font XHei DIN:style=Bold:size=10}天气预报 $stippled_hr${font}
+${execi 600 curl -s --connect-timeout 30 "http://m.weather.com.cn/data/101250105.html" >/tmp/forcast }${execi 600 curl -s --connect-timeout 30 "http://wap.weather.com.cn/data/sk/101250105.html" >/tmp/current }
+${voffset 0}${font ConkyWeather:style=Bold:size=18}${color0}${voffset -10}${execi 600 sed  's/^.*"img_title_single":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/大到暴雪/r/;t w-0;s/暴雪/r/;t w-0;s/中到大雪/q/;t w-0;s/大雪/q/;t w-0;s/小到中雪/p/;t w-0;s/中雪/p/;t w-0;s/小雪/o/;t w-0;s/雷雨/l/;t w-0;s/雷阵雨/k/;t w-0;s/大到暴雨/j/;t w-0;s/暴雨/j/;t w-0;s/中到大雨/i/;t w-0;s/大雨/i/;t w-0;s/小到中雨/h/;t w-0;s/中雨/h/;t w-0;s/小雨/s/;t w-0;s/阵雨/g/;t w-0;s/阴/f/;t w-0;s/多云/e/;t w-0;s/雾/u/;t w-0;s/晴/a/;t w-0;s/转//;t w-0;:w-0;'}${color}${font}
+${goto 105}${voffset -15}${font Arrows:style=Bold:size=18}${color0}${voffset -10}${execi 600 sed  's/^.*"WD":"//' /tmp/current | sed 's/",".*$//' | sed 's/无持续风向/v/;t w-0;s/旋转风/v/;t w-0;s/西北风/g/;t w-0;s/西南风/c/;s/东北风/k/;t w-0;s/东南风/o/;t w-0;t w-0;s/南风/a/;t w-0;s/西风/e/;t w-0;s/北风/i/;t w-0;s/东风/m/;t w-0;s/转//;t w-0;:w-0;'}${color}${font}
+${voffset -22}${goto 35}${color2}${execi 600 sed  's/^.*"city":"//' /tmp/current | sed 's/",".*$//' }: ${execi 600 sed  's/^.*"img_title_single":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr}湿度：${execi 600 sed  's/^.*"SD":"//' /tmp/current | sed 's/",".*$//' }${color} 
+${voffset 0}${goto 35}${color2}${execi 600 sed  's/^.*"WD":"//' /tmp/current | sed 's/",".*$//' } ${execi 600 sed  's/^.*"WS":"//' /tmp/current | sed 's/",".*$//' } ${alignr}${execbar sed  's/^.*"SD":"//' /tmp/current | sed 's/",".*$//'}${color}${font}
+${voffset 5}${color0}${font ConkyWeather:size=24}E${font}${color}
+${voffset -35}${goto 32}${font XHei DIN:size=10}今日: ${color2}${execi 600 sed  's/^.*"temp":"//' /tmp/current | sed 's/",".*$//' }°C${color} ${alignr}早晚：${color2}${execi 600 sed  's/^.*"temp1":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/' }${color}
+${goto 32}${font XHei DIN:size=10}明日: ${color1}${execi 600 sed  's/^.*"weather2":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr}${execi 600 sed  's/^.*"temp2":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/'}${color}${font}
+${goto 32}${font XHei DIN:size=10}后日: ${color1}${execi 600 sed  's/^.*"weather3":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr}${execi 600 sed  's/^.*"temp3":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/' }${color}${font}

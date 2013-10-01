@@ -15,8 +15,12 @@
 # If you want to use XFCE config tools...
 #
 #xfce-mcs-manager &
+numlockx on
 compton -Cc -f &
-feh --bg-scale /home/joyway/图片/wallpapers/archlinux_2_by_liuxiaofei-d53bn07.jpg
+feh --bg-scale /home/joyway/Pictures/wallpapers/196-1-1600x900.jpg
 tint2 &
-conky -c /home/joyway/.conky/conkyrc-default-CN &
+conky -c /home/joyway/.conky/conkyrc &
+conky -c /home/joyway/.conky/.conkyrc &
+xflux -l 28.471955 -g 112.805559
+parcellite -d &
 yong -d

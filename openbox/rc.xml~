@@ -316,11 +316,6 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="A-Print">
-      <action name="Execute">
-        <command>/usr/bin/snapshot win</command>
-      </action>
-    </keybind>
     <keybind key="Print">
       <action name="Execute">
         <command>/usr/bin/snapshot area</command>

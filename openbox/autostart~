@@ -17,8 +17,8 @@
 #xfce-mcs-manager &
 compton -Cc -f &
 [ -f /tmp/Loaded ] || notify-send -i clock "$(cat /proc/uptime|sed 's/ .*//'|xargs echo -e '本次开机时间：\n')秒" && touch /tmp/Loaded
-feh --bg-scale /home/joyway/Pictures/wallpapers/Milky-Way-Space-900x1600.jpg
-xbindkeys
+numlockx on
+feh --bg-scale /home/joyway/Pictures/wallpapers/506434,106.jpg
 tint2 &
 conky -c /home/joyway/.conky/conkyrc &
 conky -c /home/joyway/.conky/.conkyrc &

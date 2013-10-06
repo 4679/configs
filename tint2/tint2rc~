@@ -72,7 +72,7 @@ task_urgent_icon_asb = 85 0 0
 task_iconified_icon_asb = 85 0 0
 
 # Fonts
-task_font = XHei DIN 11
+task_font = XHei Ubuntu 11
 task_font_color = #FFFFFF 100
 task_active_font_color = #FFFFFF 100
 task_urgent_font_color = #FFFFFF 100
@@ -89,7 +89,7 @@ systray_icon_asb = 100 0 0
 
 # Clock
 time1_format = %b%e日 %H时%M分%S秒
-time1_font = XHei DIN 12
+time1_font = XHei Ubuntu 12
 clock_font_color = #FFFFFF 100
 clock_padding = 1 1
 clock_background_id = 0
@@ -101,7 +101,7 @@ tooltip_padding = 4 4
 tooltip_show_timeout = 0.05
 tooltip_hide_timeout = 0.05
 tooltip_background_id = 4
-tooltip_font = XHei DIN 10
+tooltip_font = XHei Ubuntu 10
 tooltip_font_color = #FFFFFF 100
 
 # Mouse

@@ -1,0 +1,10 @@
+"/usr/bin/xvkbd -xsendevent -text "\[Prior]""
+    m:0x10 + b:8
+"/usr/bin/xvkbd -xsendevent -text "\[Next]""
+    m:0x10 + b:9
+"xfce4-terminal"
+    m:0x1c + c:28
+    Control+Alt+Mod2 + t
+"xfce4-terminal --drop-down"
+    m:0x10 + c:96
+    Mod2 + F12

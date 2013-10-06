@@ -31,7 +31,7 @@ maximum_width 260
  
 alignment bottom_left
 gap_x 1339
-gap_y 590
+gap_y 630
 
 draw_shades no
 draw_outline no
@@ -49,7 +49,7 @@ default_color ffffff
 
 TEXT
 ${offset 0}${color #1692D0}${font XHei Mono.ShinYaLan:size=10:bold}Arch Linux ${color grey}${hr 2}${color white}${font}${color grey} 
-${font XHei DIN:style=Bold:size=14}${color white}${voffset -6}上传: ${font XHei DIN:style=Bold:size=9}${color1}${upspeed enp2s0}${color}${font XHei DIN:style=Bold:size=14} ${alignr}${color2}${voffset -6}下载: ${font XHei DIN:style=Bold:size=9}${color1}${downspeed enp2s0}${color}${font} ${alignr}${color2}
+${font XHei DIN:style=Bold:size=14}${color white}${voffset -6}上传: ${font XHei DIN:style=Bold:size=9}${color1}${upspeed ens32}${color}${font XHei DIN:style=Bold:size=14} ${alignr}${color2}${voffset -6}下载: ${font XHei DIN:style=Bold:size=9}${color1}${downspeed ens32}${color}${font} ${alignr}${color2}
 ${voffset -28}${color #52555A} ${hr 2} ${color white}
 ${voffset -8}${font Poky :size=17}P${offset 5}${font XHei Mono.ShinYaLan :size=10}CPU 1${offset 5} ${cpubar cpu1 9,140} ${cpu cpu1}%
 ${color #52555A} ${hr 2} ${color white}

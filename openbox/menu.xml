@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+	<menu id="None-4167" label="New Menu">
+		<item label="New Item">
+			<action name="Execute">
+				<execute>command</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="None-80166" label="New Menu">
+		<item label="New Item">
+			<action name="Execute">
+				<execute>command</execute>
+			</action>
+		</item>
+	</menu>
+	<menu execute="xdg_menu --format openbox3-pipe --root-menu /etc/xdg/menus/arch-applications.menu" id="apps" label="Applications"/>
+	<menu id="system-menu" label="System">
+		<item label="Openbox Menu Editor">
+			<action name="Execute">
+				<execute>obmenu</execute>
+			</action>
+		</item>
+		<item label="Openbox Configuration Manager">
+			<action name="Execute">
+				<command>obconf</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+		<separator/>
+		<item label="Reconfigure Openbox">
+			<action name="Reconfigure"/>
+		</item>
+	</menu>
+	<menu id="root-menu" label="Openbox 3">
+		<menu id="apps-accessories-menu"/>
+		<menu id="apps-editors-menu"/>
+		<menu id="apps-graphics-menu"/>
+		<menu id="apps-net-menu"/>
+		<menu id="apps-office-menu"/>
+		<menu id="apps-multimedia-menu"/>
+		<menu id="apps-term-menu"/>
+		<menu id="apps-fileman-menu"/>
+		<menu id="apps"/>
+		<menu id="system-menu"/>
+		<menu id="root-menu-12022" label="Power">
+			<item label="Reboot">
+				<action name="Execute">
+					<execute>reboot</execute>
+				</action>
+			</item>
+			<item label="Shutdown">
+				<action name="Execute">
+					<execute>poweroff</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<item label="Log Out">
+			<action name="Exit">
+				<prompt>yes</prompt>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>

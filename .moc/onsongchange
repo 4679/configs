@@ -1,0 +1,2 @@
+#!/bin/bash
+twmnc -t "Now Playing" -c "$1  By  $2"

@@ -1,0 +1,15 @@
+Shuffle           = yes
+AutoNext          = yes
+ShowFormat        = yes
+Theme             = solarized
+Layout1           = directory(0,0,FILL,100%)
+FormatString      = "%(a:%a - :)%(t:%t:)"
+MusicDir          = "/media/D/Music"
+Fastdir1          = "${MusicDir}/ヲタみん"
+Fastdir2          = "${MusicDir}/ACG 杂"
+Fastdir3          = "${MusicDir}/VOCALOID"
+Fastdir4          = "${MusicDir}/摇滚"
+Fastdir5          = "${MusicDir}/电音"
+Fastdir6          = "${MusicDir}/花たん"
+Fastdir7          = "${MusicDir}/英语 杂"
+OnSongChange      = "/home/baka/.moc/onsongchange %t %a"

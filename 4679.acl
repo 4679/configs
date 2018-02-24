@@ -1,0 +1,7 @@
+[bypass_all]
+
+[proxy_list]
+#Adnmb
+(^|\.)adnmb\.com$
+(^|\.)adnmb1\.com$
+(^|\.)fastmirror\.org$
